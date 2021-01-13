@@ -1,0 +1,15 @@
+# https://docs.docker.com/compose/compose-file/compose-file-v3/
+version: "3.9"
+
+services:
+  tor:
+    container_name: tor
+    image: osminogin/tor-simple:0.4.4.6
+    restart: on-failure
+    ports:
+      - "9050:9050"
+    networks:
+      service-network: {}
+
+networks:
+  service-network:
