@@ -6,7 +6,7 @@ services:
     container_name: tor
     image: osminogin/tor-simple:0.4.4.6
     volumes:
-      - /var/lib/tor
+      - tor:/var/lib/tor
     ports:
       - "9050:9050"
     networks:
@@ -28,4 +28,5 @@ networks:
   service_network:
 
 volumes:
+  tor:
   portainer_data:
