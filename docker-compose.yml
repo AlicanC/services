@@ -5,11 +5,27 @@ services:
   tor:
     container_name: tor
     image: osminogin/tor-simple:0.4.4.6
-    restart: on-failure
+    volumes:
+      - /var/lib/tor
     ports:
       - "9050:9050"
     networks:
-      service-network: {}
+      service_network: {}
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    networks:
+      service_network: {}
 
 networks:
-  service-network:
+  service_network:
+
+volumes:
+  portainer_data:
